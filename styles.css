@@ -1,0 +1,140 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Open+Sans:wght@500&display=swap');
+body {
+    margin:0;
+    box-sizing: border-box;
+    background-color: black;    
+    font-family: 'Open Sans', sans-serif;
+    
+}
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border:2px solid blue;
+    background-color: rgb(148, 73, 54);
+    color:rgb(31, 0, 102);
+    border-radius: 10px;
+    width:max-content;
+    margin:auto;
+    font-size: 1.25em;
+    padding:10px;
+    font-weight: bold;
+    
+}
+.container input {
+    font-size: 1.15em;
+    text-align: center;
+    border-radius: 5px;
+    border:none;
+}
+.container input:focus {
+    outline: 2px solid rgb(57, 0, 189);;
+}
+.container input.invalid {
+    outline:2px solid red;
+}
+#pages {
+    width:5ch;
+}   
+.container button {
+    background-color: rgb(57, 0, 189);
+    color:snow;
+    font-size: 1.5em;
+    padding: 5px 10px;
+    margin: 10px 0px;
+    border:none;
+    border-radius: 10px;
+}
+.container button:hover {
+    background-color: rgb(197, 232, 252);
+    color: rgb(57, 0, 189);
+}
+
+/* ---------- toggle button ------------ */
+.toggle {
+    position:relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.row {
+    position:relative;
+    display:flex;
+}
+#choose {
+    position:relative;
+}
+#isread {
+    position:relative;
+    display: inline;
+}
+label span {
+    position: absolute;
+  }
+
+  input[type="checkbox"] {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 44px;
+    height: 24px;
+    border-radius: 12px;
+    border: 2px solid black;
+    background: #eee;
+    transition: all 0.4s;
+    display: inline;
+  }
+
+  input[type="checkbox"]::before {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: black;
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: all 0.4s;
+  }
+
+  input[type="checkbox"]:checked {
+    background-color: #78b3db;
+    transition: all 0.4s;
+  }
+
+  input[type="checkbox"]:checked::before {
+    left: 20px;
+    transition: all 0.4s;
+  }
+
+
+  /* ------------ display book ------------ */
+  .display {
+    display: flex;
+    background-color: #3e3f3f;
+    margin: 20px 0px;
+    padding:10px 5px;
+    gap:10px;
+  }
+  .book {
+    display: flex;
+    background-color: orange;
+    color:black;
+    width:fit-content;
+    padding:5px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .book .title {
+    font-weight: bold;
+  }
+  .book .author {
+    font-size: 0.8em;
+  }
+  .book.isread {
+    outline: 2px solid green;
+  }
