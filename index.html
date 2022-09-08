@@ -9,7 +9,18 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
+    <h1>Library Siseneg</h1>
+    <div class="addbook"><button id="btnadd">Add Book</button></div>
+    <div class="modalbg"></div>
+    <div class="delbook">
+        <div class="text">Are you sure you want to delete the following book:</div>
+        <div class="infodelete"></div>
+        <div class="choicedel">
+            <button class="delbtns" id="delyes">Yes</button>
+            <button class="delbtns" id="delno">No</button>
+        </div>
+    </div>
+    <div class="container contvisible">
         <label for="title">Book Title</label>
         <input type="text" name="title" id="title" required>
         <label for="author">Author</label>
@@ -21,9 +32,9 @@
             <div class="row"><span>No</span><input type="checkbox" name="isread" id="isread"><span>Yes</span></div>
             
         </div>
-        <button type="submit" id="submit">Add Book</button>
+        <button id="submit">Add</button><button id="notadd">Cancel</button>
     </div>
-    <div class="display"></div>
+    <div class="display"><div class="up"><img src="up.svg" alt=""></div></div>
     
 </body>
 </html>
