@@ -14,8 +14,7 @@ body {
     margin:0;
     box-sizing: border-box;
     background-color: var(--colorpagebk);    
-    font-family: 'Open Sans', sans-serif;
-    
+    font-family: 'Open Sans', sans-serif;    
 }
 h1 {
     display: flex;
@@ -54,12 +53,9 @@ h1 {
     width:100vw;
     height:100vh;
     backdrop-filter: blur(4px);
-    /* filter:blur(14px); */
     z-index: 1;
     top:0;
     left:0;
-    /* background-color: rgba(0, 0, 0,0.35); */
-    /* opacity:30%; */
 }
 .contvisible {
     visibility: hidden;
@@ -76,7 +72,6 @@ h1 {
     color:var(--colorforborder);
     border-radius: 10px;
     width:max-content;
-    /* margin:auto; */
     font-size: 1.25em;
     padding:10px;
     font-weight: bold;
@@ -119,38 +114,6 @@ h1 {
     color: var(--colorforborder);
     outline:2px solid var(--colorforborder);
 }
-#cancel {
-    width:90%;
-    height:90%;
-    display:flex;
-    justify-content: center;
-    align-items: center;       
-    position:absolute;    
-}   
-#cancel {
-    visibility: hidden;
-}
-.book:hover #cancel {
-    visibility: visible;
-}
-#cancel:hover {
-    backdrop-filter: blur(1px);
-    background-color: rgba(0, 0, 0, 0.185);
-    border:2px solid rgba(9, 5, 66, 0.342);
-    border-radius: 5px;
-}
-#cancel:hover .svg {
-    top:15px;
-}
-#cancel::before {
-    content:"Delete book";
-    position:absolute;
-    color:white;
-    top:90px;
-}
-.svg:hover {
-    stroke:red;
-}
 
 /* ---------- toggle button ------------ */
 .toggle {
@@ -160,7 +123,6 @@ h1 {
     justify-content: center;
     align-items: center;
 }
-
 .row {
     position:relative;
     display:flex;
@@ -192,7 +154,7 @@ label span {
     width: 20px;
     height: 20px;
     border-radius: 50%;
-    background-color: var(--colorbook);
+    background-color: var(--colorpagebk);
     content: '';
     position: absolute;
     top: 0;
@@ -201,7 +163,6 @@ label span {
   }
 
   input[type="checkbox"]:checked {
-    /* background-color: var(--colorforborder); */
     transition: all 0.4s;
   }
 
@@ -269,14 +230,13 @@ label span {
     /* for checkmark: */
     position:relative;
     text-align: center;
-    /* overflow: hidden; */
-    /* box-shadow: inset -4px 0px 4px 6px rgb(114, 91, 15);  */
     color:var(--colortxtlight);
-    /* background-image: linear-gradient(to left, transparent 1px, #E4E0CE 3px, transparent 4px, transparent 5px, #E4E0CE 6px, transparent 7px, transparent 8px,#E4E0CE 9px, transparent 10px, transparent 11px);  */
     box-shadow: inset 4px -2px 4px 10px rgba(20, 17, 68,0.2), 20px 1px 8px 4px rgba(0, 0, 0, 0.5);
-    /* box-shadow: inset 300px 0 50px rgba(0,0,0,.5), 20px 0 60px rgba(0,0,0,.5); */
     top:10px;
     background-image: linear-gradient(to right,var(--colorAuthor) 5px, transparent 18px);
+  }
+  .book, .book * {
+    user-select: none;
   }
 .book::before {
     content:"";
@@ -316,17 +276,21 @@ label span {
     display: flex;
     align-items: center;
     justify-content: center;
-    /* background-image: linear-gradient(to right, rgb(15, 15, 65) 10px, var(--colorAuthor) 30px); */
     box-shadow: inset 0 0 16px 4px rgba(8, 8, 58,0.5);
   }
-
-.book .check {
+.book .check svg {
     width:30px;
     height:30px;
     position:absolute;
-    bottom:8px;
-    left:45px;
+    bottom:20px;
+    left:85px;
+}
+
+.book .checkgreen svg {    
     stroke:rgb(4, 66, 4);
+}
+.book .checkgray svg {
+    stroke:gray;
 }
 .delhide{
     visibility: hidden;
@@ -344,11 +308,10 @@ label span {
     color:var(--colorforborder);
     border-radius: 10px;
     width:250px;
-    height:300px;
-    font-size: 1.5em;
+    height:400px;
+    font-size: 1.25em;
     padding:10px;
     font-weight: bold;
-    position:absolute;
     left:0;
     right:0;
     top:50px;
@@ -356,8 +319,10 @@ label span {
     margin-right: auto;
     z-index:2;
     opacity:100;
+    gap:20px;
 }
-.delbtns {
+
+.delModalBtns {
     outline:none;
     border:none;
     font-size: 1.2em;
@@ -367,6 +332,74 @@ label span {
     color:var(--colorlight);
     margin:10px;
 }
-.delbtns:hover {
+.delModalBtns:hover {
     background-color: var(--colorpagebk);
+}
+.delbook .infodelete {
+    margin:10px 0px;
+    color:var(--colorpagebk);
+    overflow: hidden;
+}
+.delbook .text {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#bookhover {
+    width:90%;
+    height:90%;
+    display:flex;
+    justify-content: center;
+    align-items: center;       
+    position:absolute;  
+    visibility: hidden;  
+    flex-direction: column;
+    font-size: 1.25rem;
+    color:var(--colorlight);
+    font-weight: 900;
+    backdrop-filter: blur(1px);
+    background-color: rgba(0, 0, 0, 0.8);
+    border:2px solid rgba(9, 5, 66, 0.342);
+    border-radius: 5px;
+}   
+.book:hover #bookhover {
+    visibility: visible;
+}
+.markread {
+    flex:1;
+    display:flex;
+    flex-direction: column;
+    justify-content: top;
+    align-items: center;
+    gap:10px;
+    padding-top: 20px;
+}
+.markread svg:hover {
+    outline:2px dotted var(--colorlight);
+    border-radius: 50%;
+}
+.markread svg {
+    width:50px;
+    height:50px;
+}
+.hoverisnotread svg {
+    stroke:gray;
+}
+.hoverisread svg {
+    stroke:green;
+}
+.bookhoverdelbtn {
+    height:40%;
+    display:flex;
+    justify-content: top;
+    align-items: center;
+    flex-direction: column;
+    gap:10px;
+}
+.delbooksvg {
+    top:15px;
+}
+.delbooksvg:hover {
+    stroke:red;
 }
