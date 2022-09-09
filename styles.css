@@ -10,11 +10,15 @@
     --colorlight:#EEE5E5;
     --colortxtlight:#EEE5E5;
 }
+body,html {
+    /* max-width: 100vw; */
+}
 body {
     margin:0;
     box-sizing: border-box;
     background-color: var(--colorpagebk);    
-    font-family: 'Open Sans', sans-serif;    
+    font-family: 'Open Sans', sans-serif;   
+    overflow-x: hidden;
 }
 h1 {
     display: flex;
@@ -181,6 +185,9 @@ label span {
     gap:30px;
     justify-content: center;
     align-items: center;    
+    /* width:max-content; */
+    /* overflow: auto; */
+    flex-wrap: wrap;
   }
 
 .up {
@@ -400,6 +407,7 @@ label span {
 .delbooksvg {
     top:15px;
 }
+
 .delbooksvg:hover {
     stroke:red;
 }

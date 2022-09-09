@@ -152,6 +152,42 @@ myLibarary.push(
     {title: "DOM Enlightenment", author: "Cody Lindley", pages: '181', isread: true}
     );
 generateCard(myLibarary[2]);
+myLibarary.push(
+    {title: "Mindset: The New Psychology of Success", author: "Carol S. Dweck ", pages: '320', isread: true}
+    );
+generateCard(myLibarary[3]);
+myLibarary.push(
+    {title: "Javascript: The Definitive Guide", author: "David Flanagan", pages: '1096', isread: false}
+    );
+generateCard(myLibarary[4]);
+myLibarary.push(
+    {title: "DOM Enlightenment", author: "Cody Lindley", pages: '181', isread: true}
+    );
+generateCard(myLibarary[5]);
+myLibarary.push(
+    {title: "Mindset: The New Psychology of Success", author: "Carol S. Dweck ", pages: '320', isread: true}
+    );
+generateCard(myLibarary[6]);
+myLibarary.push(
+    {title: "Javascript: The Definitive Guide", author: "David Flanagan", pages: '1096', isread: false}
+    );
+generateCard(myLibarary[7]);
+myLibarary.push(
+    {title: "DOM Enlightenment", author: "Cody Lindley", pages: '181', isread: true}
+    );
+generateCard(myLibarary[8]);
+myLibarary.push(
+    {title: "Mindset: The New Psychology of Success", author: "Carol S. Dweck ", pages: '320', isread: true}
+    );
+generateCard(myLibarary[9]);
+myLibarary.push(
+    {title: "Javascript: The Definitive Guide", author: "David Flanagan", pages: '1096', isread: false}
+    );
+generateCard(myLibarary[10]);
+myLibarary.push(
+    {title: "DOM Enlightenment", author: "Cody Lindley", pages: '181', isread: true}
+    );
+generateCard(myLibarary[11]);
 
 function scrollup() {
     window.scrollTo(0,0);
@@ -173,17 +209,17 @@ function toggledelmodal() {
     delbook.classList.toggle('delhide');
 }   
 function toggledel(e){
-    storeTargetToRemove=e;
+    storeTargetToRemove=e.currentTarget;    
     let info=document.querySelector('.infodelete')
-    let indexToDelete = e.target.parentElement.parentElement.getAttribute('data-id')
     let currenttitle = e.currentTarget.parentElement.parentElement.parentElement.querySelector('.title').textContent;
     let currentauthor = e.currentTarget.parentElement.parentElement.parentElement.querySelector('.author').textContent
     info.innerHTML = '"'+currenttitle+'"<br> by <br>' + currentauthor;
     modalbg.classList.toggle('modalbg');
     delbook.classList.toggle('delhide');
+    console.log(storeTargetToRemove);
 }
 function removebook(){
-    let target=storeTargetToRemove.target.parentElement.parentElement.parentElement.getAttribute('data-id');
+    let target=storeTargetToRemove.parentElement.parentElement.parentElement.getAttribute('data-id');
     target=parseInt(target);
     myLibarary.splice(target,1);
     let divtoremove=document.querySelector(`.book[data-id="${target}"]`);
