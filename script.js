@@ -152,42 +152,7 @@ myLibarary.push(
     {title: "DOM Enlightenment", author: "Cody Lindley", pages: '181', isread: true}
     );
 generateCard(myLibarary[2]);
-myLibarary.push(
-    {title: "Mindset: The New Psychology of Success", author: "Carol S. Dweck ", pages: '320', isread: true}
-    );
-generateCard(myLibarary[3]);
-myLibarary.push(
-    {title: "Javascript: The Definitive Guide", author: "David Flanagan", pages: '1096', isread: false}
-    );
-generateCard(myLibarary[4]);
-myLibarary.push(
-    {title: "DOM Enlightenment", author: "Cody Lindley", pages: '181', isread: true}
-    );
-generateCard(myLibarary[5]);
-myLibarary.push(
-    {title: "Mindset: The New Psychology of Success", author: "Carol S. Dweck ", pages: '320', isread: true}
-    );
-generateCard(myLibarary[6]);
-myLibarary.push(
-    {title: "Javascript: The Definitive Guide", author: "David Flanagan", pages: '1096', isread: false}
-    );
-generateCard(myLibarary[7]);
-myLibarary.push(
-    {title: "DOM Enlightenment", author: "Cody Lindley", pages: '181', isread: true}
-    );
-generateCard(myLibarary[8]);
-myLibarary.push(
-    {title: "Mindset: The New Psychology of Success", author: "Carol S. Dweck ", pages: '320', isread: true}
-    );
-generateCard(myLibarary[9]);
-myLibarary.push(
-    {title: "Javascript: The Definitive Guide", author: "David Flanagan", pages: '1096', isread: false}
-    );
-generateCard(myLibarary[10]);
-myLibarary.push(
-    {title: "DOM Enlightenment", author: "Cody Lindley", pages: '181', isread: true}
-    );
-generateCard(myLibarary[11]);
+
 
 function scrollup() {
     window.scrollTo(0,0);
