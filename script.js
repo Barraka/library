@@ -22,6 +22,7 @@ delyes.addEventListener('click',removebook);
 modalbg.classList.toggle('modalbg');
 delbook.classList.toggle('delhide');
 let storeTargetToRemove;
+//
 
 function makeBook(title,author,pages,isread) {
     this.title=title;
