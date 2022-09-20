@@ -24,17 +24,21 @@ delbook.classList.toggle('delhide');
 let storeTargetToRemove;
 //
 
-function makeBook(title,author,pages,isread) {
-    this.title=title;
-    this.author=author;
-    this.pages=pages;
-    this.isread=isread;
-    this.info = function() {
-        let ending;
-        if(isread)ending="is already read";
-        else ending="not read yet";
-        return(`${title} by ${author}, ${pages} pages, ${ending}`);
-    };
+class makeBook {
+    constructor(title, author, pages, isread) {
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.isread = isread;
+        this.info = function () {
+            let ending;
+            if (isread)
+                ending = "is already read";
+            else
+                ending = "not read yet";
+            return (`${title} by ${author}, ${pages} pages, ${ending}`);
+        };
+    }
 }
 inputs.forEach(x=> {
     x.addEventListener('blur',outfocus);
