@@ -13,6 +13,8 @@ let modalbg=document.querySelector(".modalbg");
 let delbook=document.querySelector(".delbook");
 let delno=document.querySelector("#delno");
 let delyes=document.querySelector("#delyes");
+let myform = document.querySelector('.myform');
+
 submit.addEventListener("click", checkinputs);
 up.addEventListener('click', scrollup);
 add.addEventListener('click', toggleAdd);
@@ -22,7 +24,7 @@ delyes.addEventListener('click',removebook);
 modalbg.classList.toggle('modalbg');
 delbook.classList.toggle('delhide');
 let storeTargetToRemove;
-//
+let eventFlag=false;
 
 class makeBook {
     constructor(title, author, pages, isread) {
@@ -41,34 +43,56 @@ class makeBook {
     }
 }
 inputs.forEach(x=> {
-    x.addEventListener('blur',outfocus);
+    x.addEventListener('focus',onFocus);
+    x.addEventListener('input',onType);
 });
 
-function outfocus(e) {
-    if(e.target.name==='pages') {
-        console.log('pages');
-    }
-    if(!e.target.checkValidity())e.target.classList.add("invalid");
-    
-    else e.target.classList.remove("invalid");
+function onFocus(e) {
+    if(eventFlag) {e.currentTarget.removeEventListener('blur', outfocus);eventFlag=false;}
+    else {e.currentTarget.addEventListener('blur',outfocus);eventFlag=true;}
 }
-let myLibarary=[];
-
-function checkinputs() {
+function outfocus(e) {
+    e.currentTarget.removeEventListener('blur', outfocus);
     
-    let flag=true;
+    e.currentTarget.setCustomValidity('');
+    if(!e.currentTarget.checkValidity()) {
+        e.currentTarget.classList.add("invalid");
+        if(e.currentTarget.id==='author')e.currentTarget.setCustomValidity('Only letters allowed, at least 3.');
+        if(e.currentTarget.id==='pages')e.currentTarget.setCustomValidity('Only numbers allowed');
+        e.currentTarget.reportValidity();
+        console.log(this);
+        // setTimeout(()=>{document.activeElement.blur();},1000);
+    }
+    
+    else {
+        e.target.classList.remove("invalid");
+        eventFlag=false;
+    }
+}
+
+function onType(e) {
+    e.target.setCustomValidity('');
+    if(e.target.classList.contains("invalid")) {
+        if(e.target.checkValidity())e.target.classList.remove("invalid");
+        
+    }    
+}
+
+
+function checkinputs(e) {  
+    let flag = true;  
     inputs.forEach(x=> {
         if(!x.checkValidity()){
             x.setCustomValidity("");
             if(x.validity.patternMismatch)x.setCustomValidity("Only numbers 0-9 are allowed");
             x.reportValidity();
-            flag=false;
             x.classList.add("invalid");
-        }
-        
+            flag=false;
+        }        
     });
     if(flag)addBook();
 }
+let myLibarary=[];
 function addBook() {   
     //Parse the title to capitalise each word, by storing them in a list
     let booktitle=title.value;
@@ -172,6 +196,9 @@ function eraseform() {
     title.value="";
     author.value="";
     pages.value="";
+    title.classList.remove('invalid');
+    author.classList.remove('invalid');
+    pages.classList.remove('invalid');
 }
 
 function toggledelmodal() {
@@ -210,6 +237,7 @@ function toggleisread(e){
 
     //changes in database
     let currentIndex = e.currentTarget.parentElement.parentElement.parentElement.getAttribute('data-id');
+    currentIndex=parseInt(currentIndex);
     myLibarary[currentIndex].isread=!myLibarary[currentIndex].isread;
     //toggle cover visibility
     let target = e.currentTarget.parentElement.parentElement.parentElement.querySelector('.check');

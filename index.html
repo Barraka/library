@@ -21,18 +21,20 @@
         </div>
     </div>
     <div class="container contvisible">
-        <label for="title">Book Title</label>
-        <input type="text" name="title" id="title" required>
-        <label for="author">Author</label>
-        <input type="text" name="author" id="author" required>
-        <label for="pages"># Pages</label>
-        <input type="text" name="pages" id="pages" pattern="[0-9]+" required>
-        <div class="toggle">
-            <label for="power" id="choose">Have you read the book?</label>
-            <div class="row"><span>No</span><input type="checkbox" name="isread" id="isread"><span>Yes</span></div>
-            
-        </div>
-        <button id="submit">Add</button><button id="notadd">Cancel</button>
+        <form class='myform'>
+            <label for="title">Book Title</label>
+            <input type="text" name="title" id="title" required>
+            <label for="author">Author</label>
+            <input type="text" name="author" id="author" pattern="[A-Za-z]{3,}" required>
+            <label for="pages"># Pages</label>
+            <input type="text" name="pages" id="pages" pattern="[0-9]+" required>
+            <div class="toggle">
+                <label for="power" id="choose">Have you read the book?</label>
+                <div class="row"><span>No</span><input type="checkbox" name="isread" id="isread"><span>Yes</span></div>
+                
+            </div>
+            <button id="submit">Add</button><button id="notadd">Cancel</button>
+        </form>
     </div>
     <div class="display"><div class="up"><img src="up.svg" alt=""></div></div>
     
